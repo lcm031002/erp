@@ -37,6 +37,7 @@ public class UserController {
     public Map<String, Object> save(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         User user = new User();
+        user.setId(2L);
         user.setUserName("test2");
         user = this.userService.saveAndFlush(user);
         resultMap.put("data", user);
