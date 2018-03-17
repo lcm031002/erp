@@ -1,9 +1,6 @@
 package com.edu.erp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,7 +8,7 @@ import java.util.Date;
 @Table(name = "T_Bas_Company_Pos")
 public class BasCompanyPos implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     // POS编码
     private String encoding;

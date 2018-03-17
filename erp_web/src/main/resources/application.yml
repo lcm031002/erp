@@ -22,6 +22,10 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.edu.erp.mapper

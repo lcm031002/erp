@@ -22,6 +22,14 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
+    public SysUser findByUsername(String username) {
+        SysUser sysUser = new SysUser();
+        sysUser.setUsername(username);
+        Example<SysUser> example = Example.of(sysUser);
+        return this.sysUserRepository.findOne(example);
+    }
+
+    @Override
     public List<SysUser> findAll() {
         return sysUserRepository.findAll();
     }

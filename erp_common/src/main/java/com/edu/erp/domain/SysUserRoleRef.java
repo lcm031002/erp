@@ -1,9 +1,6 @@
 package com.edu.erp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,7 +8,7 @@ import java.util.Date;
 @Table(name = "T_Sys_User_Role_Ref")
 public class SysUserRoleRef implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     // 用户id
     private Long userId;

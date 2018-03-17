@@ -9,6 +9,8 @@ import java.util.List;
 public interface SysUserService {
     SysUser findOne(Long id);
 
+    SysUser findByUsername(String username);
+
     List<SysUser> findAll();
 
     List<SysUser> findAll(Sort sort);
