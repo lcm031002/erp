@@ -3,6 +3,7 @@ package com.edu.erp.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "T_Sys_Role")
@@ -10,6 +11,8 @@ public class SysRole implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    // 角色编码
+    private String roleCode;
     // 角色名称
     private String roleName;
     // 状态(1=有效 0=逻辑删除)
@@ -23,6 +26,10 @@ public class SysRole implements Serializable {
     // 创建时间
     private Date updateTime;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "roleId", insertable = false, updatable = false)
+    List<SysUserRoleRef> sysUserRoleRefList;
+
     /**
      * 设置 主键id,对应字段 t_sys_role.id
      */
@@ -35,6 +42,20 @@ public class SysRole implements Serializable {
      */
     public Long getId() {
         return this.id;
+    }
+
+    /**
+     * 获取 角色编码,对应字段 t_sys_role.role_code
+     */
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    /**
+     * 设置 角色编码,对应字段 t_sys_role.role_code
+     */
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     /**
@@ -119,5 +140,13 @@ public class SysRole implements Serializable {
      */
     public Date getUpdateTime() {
         return this.updateTime;
+    }
+
+    public List<SysUserRoleRef> getSysUserRoleRefList() {
+        return sysUserRoleRefList;
+    }
+
+    public void setSysUserRoleRefList(List<SysUserRoleRef> sysUserRoleRefList) {
+        this.sysUserRoleRefList = sysUserRoleRefList;
     }
 }

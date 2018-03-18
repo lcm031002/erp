@@ -3,6 +3,7 @@ package com.edu.erp.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "T_Sys_User")
@@ -30,6 +31,10 @@ public class SysUser implements Serializable {
     private Long updateUser;
     // 创建时间
     private Date updateTime;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    List<SysUserRoleRef> sysUserRoleRefList;
 
     /**
      * 设置 主键id,对应字段 t_sys_user.id
@@ -185,4 +190,11 @@ public class SysUser implements Serializable {
         return this.updateTime;
     }
 
+    public List<SysUserRoleRef> getSysUserRoleRefList() {
+        return sysUserRoleRefList;
+    }
+
+    public void setSysUserRoleRefList(List<SysUserRoleRef> sysUserRoleRefList) {
+        this.sysUserRoleRefList = sysUserRoleRefList;
+    }
 }

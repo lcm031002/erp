@@ -27,8 +27,8 @@ spring:
     suffix: .html
 
 mybatis:
-  mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.edu.erp.mapper
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  type-aliases-package: com.edu.erp.domain
 
 pagehelper:
     helperDialect: mysql

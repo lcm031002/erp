@@ -15,6 +15,14 @@ public class SysUserRoleRef implements Serializable {
     // 角色id
     private Long roleId;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    private SysUser sysUser;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "roleId", insertable = false, updatable = false)
+    private SysRole sysRole;
+
     /**
      * 设置 主键id,对应字段 t_sys_user_role_ref.id
      */
@@ -55,5 +63,21 @@ public class SysUserRoleRef implements Serializable {
      */
     public Long getRoleId() {
         return this.roleId;
+    }
+
+    public SysUser getSysUser() {
+        return sysUser;
+    }
+
+    public void setSysUser(SysUser sysUser) {
+        this.sysUser = sysUser;
+    }
+
+    public SysRole getSysRole() {
+        return sysRole;
+    }
+
+    public void setSysRole(SysRole sysRole) {
+        this.sysRole = sysRole;
     }
 }
