@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.erp.mapper.SysRoleMenuRefMapper">
+    <select id="findPermissionByUserId" parameterType="long" resultType="com.edu.erp.entity.Permission">
+        SELECT ssrr.user_id as userId, ssmr.menu_id as permissionId
+        from t_sys_user_role_ref ssrr, t_sys_role_menu_ref ssmr
+        where ssrr.role_id = ssmr.role_id
+          and ssrr.user_id = #{userId}
+    </select>
+</mapper>
