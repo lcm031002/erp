@@ -2,6 +2,8 @@ package com.edu.erp.core.service.impl;
 
 import com.edu.erp.core.service.SysRoleMenuRefService;
 import com.edu.erp.domain.SysRoleMenuRef;
+import com.edu.erp.entity.Permission;
+import com.edu.erp.mapper.SysRoleMenuRefMapper;
 import com.edu.erp.repository.SysRoleMenuRefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -15,6 +17,9 @@ public class SysRoleMenuRefServiceImpl implements SysRoleMenuRefService {
 
     @Autowired
     private SysRoleMenuRefRepository sysRoleMenuRefRepository;
+
+    @Autowired
+    private SysRoleMenuRefMapper sysRoleMenuRefMapper;
 
     @Override
     public SysRoleMenuRef findOne(Long id) {
@@ -59,5 +64,10 @@ public class SysRoleMenuRefServiceImpl implements SysRoleMenuRefService {
     @Override
     public void delete(SysRoleMenuRef sysRoleMenuRef) {
         sysRoleMenuRefRepository.delete(sysRoleMenuRef);
+    }
+
+    @Override
+    public List<Permission> findPermissionByUserId(Long userId) {
+        return sysRoleMenuRefMapper.findPermissionByUserId(userId);
     }
 }

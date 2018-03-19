@@ -1,6 +1,7 @@
 package com.edu.erp.config;
 
 import com.edu.erp.security.CustomUserDetailsService;
+import com.edu.erp.security.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/hello")//登录成功后默认跳转到"/hello"
+                .defaultSuccessUrl("/index")//登录成功后默认跳转到首页
                 .permitAll()
+                .successHandler(loginSuccessHandler())
                 .and()
                 .logout()
                 .permitAll();
@@ -46,6 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public Md5PasswordEncoder passwordEncoder() {
         return new Md5PasswordEncoder();
 
+    }
+
+    @Bean
+    public LoginSuccessHandler loginSuccessHandler(){
+        return new LoginSuccessHandler();
     }
 
     /**

@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/sysUser")
-public class SysUserController {
+public class SysUserController extends BaseController {
 
     @Resource(name="sysUserService")
     private SysUserService sysUserService;

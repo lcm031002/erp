@@ -1,6 +1,7 @@
 package com.edu.erp.core.service;
 
 import com.edu.erp.domain.SysRoleMenuRef;
+import com.edu.erp.entity.Permission;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 
@@ -24,4 +25,6 @@ public interface SysRoleMenuRefService {
     void delete(Long id);
 
     void delete(SysRoleMenuRef sysRoleMenuRef);
+
+    List<Permission> findPermissionByUserId(Long userId);
 }
